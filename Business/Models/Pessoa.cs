@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Models
 {
-    public class Pessoa
+    public class Pessoa : GenericModel
     {
         public long IdPessoa { get; set; }
         public String Nome { get; set; }
