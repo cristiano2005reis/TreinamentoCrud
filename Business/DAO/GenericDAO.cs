@@ -20,11 +20,13 @@ namespace Business.DAO
         public void Add(T entity)
         {
             context.Set<T>().Add(entity);
+            context.SaveChanges();
         }
 
-        public Pessoa Update (T entity)
-        {            
-            return null;
+        public void Update (T entity)
+        {
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
 
         public void Delete (T entity)
@@ -33,9 +35,14 @@ namespace Business.DAO
             context.SaveChanges();
         }
 
-        public T Find (T entity)
+        public T Find (int id)
         {
-            return context.Set<T>().Find(entity);
+            return context.Set<T>().Find(id);
+        }
+
+        public List<T> ListAll()
+        {
+            return context.Set<T>().ToList();
         }
 
         public void Dispose()
