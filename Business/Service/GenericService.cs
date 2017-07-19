@@ -15,34 +15,43 @@ namespace Business.Service
 
         public void Add(T entity)
         {
-            GenericDAO<T> dao = new GenericDAO<T>();
-            dao.Add(entity);
+            using (GenericDAO<T> dao = new GenericDAO<T>())
+            {
+                dao.Add(entity);
+            }   
         }
 
         public void Update(T entity)
         {
-            GenericDAO<T> dao = new GenericDAO<T>();
-            dao.Update(entity);
+            using (GenericDAO<T> dao = new GenericDAO<T>())
+            {
+                dao.Update(entity);
+            }
         }
 
         public void Delete(T entity)
         {
-            GenericDAO<T> dao = new GenericDAO<T>();
-            dao.Delete(entity);
+            using (GenericDAO<T> dao = new GenericDAO<T>())
+            {
+                dao.Delete(entity);
+            }
         }
 
-        public void Find(T entity)
+        public void Find(int id)
         {
-            GenericDAO<T> dao = new GenericDAO<T>();
-            dao.Find(entity);
+            using (GenericDAO<T> dao = new GenericDAO<T>())
+            {
+                dao.Find(id);
+            }
         }
 
         public List<T> ListAll()
         {
-            List<T> list = new List<T>();
-
-            GenericDAO<T> dao = new GenericDAO<T>();
-            return list = dao.ListAll().ToList();
+            using (GenericDAO<T> dao = new GenericDAO<T>())
+            {
+                List<T> list = new List<T>();
+                return list = dao.ListAll().ToList();
+            }
         }
 
         public void Dispose()
