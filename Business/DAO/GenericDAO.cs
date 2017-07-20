@@ -40,7 +40,7 @@ namespace Business.DAO
             return context.Set<T>().Find(id);
         }
 
-        public List<T> ListAll()
+        public IEnumerable<T> ListAll()
         {
             return context.Set<T>().ToList();
         }

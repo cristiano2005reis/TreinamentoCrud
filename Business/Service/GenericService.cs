@@ -45,7 +45,7 @@ namespace Business.Service
             }
         }
 
-        public List<T> ListAll()
+        public IEnumerable<T> ListAll()
         {
             using (GenericDAO<T> dao = new GenericDAO<T>())
             {
