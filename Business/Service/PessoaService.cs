@@ -17,8 +17,8 @@ namespace Business.Service
 
         public Pessoa Find(string name)
         {
-            PessoaDAO dao = new PessoaDAO();
-            return dao.FindByName(name);
+            PessoaDAO pessoaDao = (PessoaDAO)dao;
+            return pessoaDao.FindByName(name);
         }
 
     }
