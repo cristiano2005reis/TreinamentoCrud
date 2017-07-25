@@ -11,52 +11,52 @@ namespace Business.Service
 {
     public class GenericService<T>: IDisposable where T: GenericModel
     {
-        private CadastroContext context;
+        protected readonly GenericDAO<T> dao;
 
-        public void Add(T entity)
+        public GenericService(GenericDAO<T> dao)
         {
-            using (GenericDAO<T> dao = new GenericDAO<T>())
-            {
+            this.dao = dao;
+        }
+
+        public virtual void Add(T entity)
+        {
+            
                 dao.Add(entity);
-            }   
+
         }
 
         public void Update(T entity)
         {
-            using (GenericDAO<T> dao = new GenericDAO<T>())
-            {
+
                 dao.Update(entity);
-            }
+
         }
 
         public void Delete(T entity)
         {
-            using (GenericDAO<T> dao = new GenericDAO<T>())
-            {
+
                 dao.Delete(entity);
-            }
+
         }
 
         public void Find(int id)
         {
-            using (GenericDAO<T> dao = new GenericDAO<T>())
-            {
+
                 dao.Find(id);
-            }
+
         }
 
         public IEnumerable<T> ListAll()
         {
-            using (GenericDAO<T> dao = new GenericDAO<T>())
-            {
+
                 List<T> list = new List<T>();
                 return list = dao.ListAll().ToList();
-            }
+
         }
 
         public void Dispose()
         {
-            context.Dispose();
+
         }
     }
 }
