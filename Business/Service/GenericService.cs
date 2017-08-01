@@ -46,6 +46,11 @@ namespace Business.Service
 
         }
 
+        public virtual void Validade(T entity)
+        {
+
+        }
+
         public IEnumerable<T> ListAll()
         {
 

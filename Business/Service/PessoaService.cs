@@ -21,5 +21,19 @@ namespace Business.Service
             return pessoaDao.FindByName(name);
         }
 
+        public override void Validade(Pessoa entity)
+        {
+            if (string.IsNullOrEmpty(entity.Nome))
+            {
+                throw new Exception("Nome não informado!");
+            }
+
+            if (string.IsNullOrEmpty(entity.CPF))
+            {
+                throw new Exception("CPF não informado!");
+            }
+
+        }
+
     }
 }
