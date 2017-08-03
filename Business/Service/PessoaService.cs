@@ -24,20 +24,23 @@ namespace Business.Service
 
         public override void Validade(Pessoa entity)
         {
-            Type atributos = typeof(Pessoa);
 
-            PropertyInfo[] valores = atributos.GetProperties();
+            StringBuilder errors = new StringBuilder();
 
-            object str = null;
-
-            foreach(PropertyInfo valor in valores)
+            if (!string.IsNullOrEmpty(entity.Nome))
             {
-                str = valor.GetValue(entity, null);
+                errors.Append("O campo nome é obrigatório \n");
+            }
 
-                if(str == null)
-                {
-                    throw new Exception();
-                }
+            if (!string.IsNullOrEmpty(entity.CPF))
+            {
+                errors.Append("O campo CPF é obrigatório \n");
+            }
+
+
+            if (!string.IsNullOrEmpty(errors.ToString()))
+            {
+                throw new Exception(errors.ToString());
             }
 
         }
