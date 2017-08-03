@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.DAO;
+using System.Reflection;
 
 namespace Business.Service
 {
@@ -23,14 +24,20 @@ namespace Business.Service
 
         public override void Validade(Pessoa entity)
         {
-            if (string.IsNullOrEmpty(entity.Nome))
-            {
-                throw new Exception("Nome não informado!");
-            }
+            Type atributos = typeof(Pessoa);
 
-            if (string.IsNullOrEmpty(entity.CPF))
+            PropertyInfo[] valores = atributos.GetProperties();
+
+            object str = null;
+
+            foreach(PropertyInfo valor in valores)
             {
-                throw new Exception("CPF não informado!");
+                str = valor.GetValue(entity, null);
+
+                if(str == null)
+                {
+                    throw new Exception();
+                }
             }
 
         }
